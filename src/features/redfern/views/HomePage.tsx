@@ -54,11 +54,11 @@ export const HomePage: React.FC = () => {
   }, [isPaused, nextSlide]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX;
+    touchStartX.current = e.targetTouches[0]?.clientX ?? null;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.targetTouches[0].clientX;
+    touchEndX.current = e.targetTouches[0]?.clientX ?? null;
   };
 
   const handleTouchEnd = () => {
@@ -112,9 +112,9 @@ export const HomePage: React.FC = () => {
                 priority={idx === 0}
                 src={slide.image}
                 alt={slide.imageAlt}
-                category={categoryMap[idx]}
+                category={categoryMap[idx] ?? 'steaks'}
                 title={slide.headline}
-                className="w-full h-full scale-100 transition-transform duration-[6000ms] ease-out object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
 
               {/* Scrim Overlay for WCAG AA readability */}

@@ -51,7 +51,7 @@ export const ReservationsPage: React.FC = () => {
       formatted = `(${raw}`;
     }
     setPhone(formatted);
-    if (errors.phone) {
+    if (errors['phone']) {
       setErrors((prev) => ({ ...prev, phone: '' }));
     }
   };
@@ -60,36 +60,36 @@ export const ReservationsPage: React.FC = () => {
     const newErrors: Record<string, string> = {};
 
     if (!fullName.trim()) {
-      newErrors.fullName = 'Full name is required.';
+      newErrors['fullName'] = 'Full name is required.';
     }
 
     const digits = phone.replace(/\D/g, '');
     if (!digits) {
-      newErrors.phone = 'Telephone number is required.';
+      newErrors['phone'] = 'Telephone number is required.';
     } else if (digits.length !== 10) {
-      newErrors.phone = 'Please provide a valid 10-digit US phone number.';
+      newErrors['phone'] = 'Please provide a valid 10-digit US phone number.';
     }
 
     if (!date) {
-      newErrors.date = 'Reservation date is required.';
+      newErrors['date'] = 'Reservation date is required.';
     } else {
       const selected = new Date(date + 'T00:00:00');
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       if (selected < today) {
-        newErrors.date = 'Reservation date cannot be in the past.';
+        newErrors['date'] = 'Reservation date cannot be in the past.';
       }
     }
 
     if (!time) {
-      newErrors.time = 'Preferred dining time is required.';
+      newErrors['time'] = 'Preferred dining time is required.';
     }
 
     const partySize = parseInt(guests, 10);
     if (isNaN(partySize) || partySize < 1) {
-      newErrors.guests = 'Party size must be at least 1 guest.';
+      newErrors['guests'] = 'Party size must be at least 1 guest.';
     } else if (partySize > 8) {
-      newErrors.guests =
+      newErrors['guests'] =
         'Online reservations accommodate up to 8 guests. For larger parties, please contact our team directly at (512) 555-0198.';
     }
 
@@ -279,19 +279,19 @@ export const ReservationsPage: React.FC = () => {
                     value={fullName}
                     onChange={(e) => {
                       setFullName(e.target.value);
-                      if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: '' }));
+                      if (errors['fullName']) setErrors((prev) => ({ ...prev, fullName: '' }));
                     }}
                     placeholder="e.g. Eleanor Vance"
                     className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:ring-2 transition-all ${
-                      errors.fullName
+                      errors['fullName']
                         ? 'border-destructive focus:ring-destructive/50'
                         : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                     }`}
                   />
-                  {errors.fullName && (
+                  {errors['fullName'] && (
                     <p className="text-xs text-destructive mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3.5 h-3.5" />
-                      {errors.fullName}
+                      {errors['fullName']}
                     </p>
                   )}
                 </div>
@@ -310,15 +310,15 @@ export const ReservationsPage: React.FC = () => {
                     onChange={handlePhoneChange}
                     placeholder="(512) 555-0123"
                     className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground placeholder-muted-foreground/40 font-mono focus:outline-none focus:ring-2 transition-all ${
-                      errors.phone
+                      errors['phone']
                         ? 'border-destructive focus:ring-destructive/50'
                         : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                     }`}
                   />
-                  {errors.phone ? (
+                  {errors['phone'] ? (
                     <p className="text-xs text-destructive mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3.5 h-3.5" />
-                      {errors.phone}
+                      {errors['phone']}
                     </p>
                   ) : (
                     <p className="text-[11px] text-muted-foreground/60">
@@ -343,18 +343,18 @@ export const ReservationsPage: React.FC = () => {
                       value={date}
                       onChange={(e) => {
                         setDate(e.target.value);
-                        if (errors.date) setErrors((prev) => ({ ...prev, date: '' }));
+                        if (errors['date']) setErrors((prev) => ({ ...prev, date: '' }));
                       }}
                       className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground font-mono focus:outline-none focus:ring-2 transition-all ${
-                        errors.date
+                        errors['date']
                           ? 'border-destructive focus:ring-destructive/50'
                           : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                       }`}
                     />
-                    {errors.date && (
+                    {errors['date'] && (
                       <p className="text-xs text-destructive mt-1 flex items-center gap-1">
                         <AlertCircle className="w-3.5 h-3.5" />
-                        {errors.date}
+                        {errors['date']}
                       </p>
                     )}
                   </div>
@@ -371,10 +371,10 @@ export const ReservationsPage: React.FC = () => {
                       value={time}
                       onChange={(e) => {
                         setTime(e.target.value);
-                        if (errors.time) setErrors((prev) => ({ ...prev, time: '' }));
+                        if (errors['time']) setErrors((prev) => ({ ...prev, time: '' }));
                       }}
                       className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground font-mono focus:outline-none focus:ring-2 transition-all ${
-                        errors.time
+                        errors['time']
                           ? 'border-destructive focus:ring-destructive/50'
                           : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                       }`}
@@ -385,10 +385,10 @@ export const ReservationsPage: React.FC = () => {
                         </option>
                       ))}
                     </select>
-                    {errors.time && (
+                    {errors['time'] && (
                       <p className="text-xs text-destructive mt-1 flex items-center gap-1">
                         <AlertCircle className="w-3.5 h-3.5" />
-                        {errors.time}
+                        {errors['time']}
                       </p>
                     )}
                   </div>
@@ -406,10 +406,10 @@ export const ReservationsPage: React.FC = () => {
                     value={guests}
                     onChange={(e) => {
                       setGuests(e.target.value);
-                      if (errors.guests) setErrors((prev) => ({ ...prev, guests: '' }));
+                      if (errors['guests']) setErrors((prev) => ({ ...prev, guests: '' }));
                     }}
                     className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground font-mono focus:outline-none focus:ring-2 transition-all ${
-                      errors.guests
+                      errors['guests']
                         ? 'border-destructive focus:ring-destructive/50'
                         : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                     }`}
@@ -438,10 +438,10 @@ export const ReservationsPage: React.FC = () => {
                     </div>
                   )}
 
-                  {errors.guests && (
+                  {errors['guests'] && (
                     <p className="text-xs text-destructive mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3.5 h-3.5" />
-                      {errors.guests}
+                      {errors['guests']}
                     </p>
                   )}
                 </div>

@@ -31,14 +31,14 @@ export const ContactPage: React.FC = () => {
   const validate = (): boolean => {
     const errs: Record<string, string> = {};
 
-    if (!name.trim()) errs.name = 'Please provide your name.';
+    if (!name.trim()) errs['name'] = 'Please provide your name.';
     if (!email.trim()) {
-      errs.email = 'Please provide your email address.';
+      errs['email'] = 'Please provide your email address.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errs.email = 'Please provide a valid email format.';
+      errs['email'] = 'Please provide a valid email format.';
     }
-    if (!subject.trim()) errs.subject = 'Please provide a subject.';
-    if (!message.trim()) errs.message = 'Please enter your message.';
+    if (!subject.trim()) errs['subject'] = 'Please provide a subject.';
+    if (!message.trim()) errs['message'] = 'Please enter your message.';
 
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -206,17 +206,17 @@ export const ContactPage: React.FC = () => {
                         value={name}
                         onChange={(e) => {
                           setName(e.target.value);
-                          if (errors.name) setErrors((prev) => ({ ...prev, name: '' }));
+                          if (errors['name']) setErrors((prev) => ({ ...prev, name: '' }));
                         }}
                         placeholder="e.g. Thomas Cole"
                         className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:ring-2 transition-all ${
-                          errors.name
+                          errors['name']
                             ? 'border-destructive focus:ring-destructive/50'
                             : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                         }`}
                       />
-                      {errors.name && (
-                        <p className="text-xs text-destructive mt-1">{errors.name}</p>
+                      {errors['name'] && (
+                        <p className="text-xs text-destructive mt-1">{errors['name']}</p>
                       )}
                     </div>
 
@@ -232,17 +232,17 @@ export const ContactPage: React.FC = () => {
                         value={email}
                         onChange={(e) => {
                           setEmail(e.target.value);
-                          if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
+                          if (errors['email']) setErrors((prev) => ({ ...prev, email: '' }));
                         }}
                         placeholder="thomas@example.com"
                         className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:ring-2 transition-all ${
-                          errors.email
+                          errors['email']
                             ? 'border-destructive focus:ring-destructive/50'
                             : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                         }`}
                       />
-                      {errors.email && (
-                        <p className="text-xs text-destructive mt-1">{errors.email}</p>
+                      {errors['email'] && (
+                        <p className="text-xs text-destructive mt-1">{errors['email']}</p>
                       )}
                     </div>
                   </div>
@@ -259,17 +259,17 @@ export const ContactPage: React.FC = () => {
                       value={subject}
                       onChange={(e) => {
                         setSubject(e.target.value);
-                        if (errors.subject) setErrors((prev) => ({ ...prev, subject: '' }));
+                        if (errors['subject']) setErrors((prev) => ({ ...prev, subject: '' }));
                       }}
                       placeholder="e.g. Private Dining Inquiry or Large Party Table"
                       className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:ring-2 transition-all ${
-                        errors.subject
+                        errors['subject']
                           ? 'border-destructive focus:ring-destructive/50'
                           : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                       }`}
                     />
-                    {errors.subject && (
-                      <p className="text-xs text-destructive mt-1">{errors.subject}</p>
+                    {errors['subject'] && (
+                      <p className="text-xs text-destructive mt-1">{errors['subject']}</p>
                     )}
                   </div>
 
@@ -285,17 +285,17 @@ export const ContactPage: React.FC = () => {
                       value={message}
                       onChange={(e) => {
                         setMessage(e.target.value);
-                        if (errors.message) setErrors((prev) => ({ ...prev, message: '' }));
+                        if (errors['message']) setErrors((prev) => ({ ...prev, message: '' }));
                       }}
                       placeholder="Tell us about your event, dietary inquiries, or dining questions..."
                       className={`w-full px-4 py-3 bg-input-surface border rounded text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:ring-2 transition-all resize-none ${
-                        errors.message
+                        errors['message']
                           ? 'border-destructive focus:ring-destructive/50'
                           : 'border-foreground/10 focus:border-copper focus:ring-copper/30'
                       }`}
                     />
-                    {errors.message && (
-                      <p className="text-xs text-destructive mt-1">{errors.message}</p>
+                    {errors['message'] && (
+                      <p className="text-xs text-destructive mt-1">{errors['message']}</p>
                     )}
                   </div>
 
