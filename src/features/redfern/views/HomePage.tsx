@@ -113,7 +113,7 @@ export const HomePage: React.FC = () => {
                 src={slide.image}
                 alt={slide.imageAlt}
                 category={categoryMap[idx]}
-                title=Redfern Table &amp; Grill
+                title={slide.headline}
                 className="w-full h-full scale-100 transition-transform duration-[6000ms] ease-out object-cover"
               />
 
@@ -133,7 +133,7 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-normal text-foreground leading-[1.1] text-balance">
-                    {slide.headline}
+                    Redfern Table &amp; Grill
                   </h1>
 
                   <p className="text-base sm:text-lg text-foreground/85 font-light leading-relaxed max-w-xl text-balance">
